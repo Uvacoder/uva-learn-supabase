@@ -13,11 +13,12 @@ export async function createTodo(todo) {
     return checkError(response);
 }
 
-export async function deleteAllTodos() {
+export async function deleteAllTodos(id) {
     // delete all todos for this user in supabase
     const response = await client
         .from('todos')
-        .delete('*');
+        .delete('*')
+        .match({ id });
     return checkError(response);
 }
 
