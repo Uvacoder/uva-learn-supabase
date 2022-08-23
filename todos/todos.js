@@ -46,6 +46,7 @@ async function handleComplete(todo) {
         const completed = response.data;
          // swap out todo in array
         const todos = await getTodos();
+        
         const index = todos.indexOf(todo);
         if (index !== -1) {
             todos.splice(index, 1, completed);
@@ -92,7 +93,7 @@ logoutButton.addEventListener('click', () => {
 deleteButton.addEventListener('click', async () => {
     // delete all todos
     // modify state to match 
-    deleteAllTodos();
+    await deleteAllTodos();
     // re displayTodos
-    displayTodos();
+    await displayTodos();
 });
