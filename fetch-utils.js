@@ -10,7 +10,6 @@ export async function createTodo(todo) {
         .from('todos')
         .insert(todo)
         .single();
-
     return checkError(response);
 }
 
@@ -19,7 +18,6 @@ export async function deleteAllTodos() {
     const response = await client
         .from('todos')
         .delete('*');
-
     return checkError(response);
 }
 
@@ -28,7 +26,6 @@ export async function getTodos() {
     const response = await client
         .from('todos')
         .select();
-
     return checkError(response);
 }
 
@@ -39,7 +36,6 @@ export async function completeTodo(id) {
         .update({ complete: true })
         .match({ id })
         .single();
-        
     return checkError(response);
 }
 
@@ -49,7 +45,6 @@ export function getUser() {
 
 export function checkAuth() {
     const user = getUser();
-
     if (!user) location.replace('../');
 }
 
@@ -62,19 +57,16 @@ export function redirectIfLoggedIn() {
 
 export async function signupUser(email, password) {
     const response = await client.auth.signUp({ email, password });
-
     return response.user;
 }
 
 export async function signInUser(email, password) {
     const response = await client.auth.signIn({ email, password });
-
     return response.user;
 }
 
 export async function logout() {
     await client.auth.signOut();
-
     window.location.replace('../');
 }
 
