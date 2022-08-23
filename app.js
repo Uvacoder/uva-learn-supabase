@@ -15,24 +15,26 @@ const signUpPassword = document.getElementById('sign-up-password');
 // if user currently logged in, redirect
 redirectIfLoggedIn();
 
-signUpForm.addEventListener('submit', async(event)=>{
+signUpForm.addEventListener('submit', async (event)=>{
     event.preventDefault();
     const user = await signupUser(signUpEmail.value, signUpPassword.value);
 
     if (user){
         redirectIfLoggedIn();
     } else {
+         // eslint-disable-next-line
         console.error(user);
     }
 });
 
-signInForm.addEventListener('submit', async(event)=>{
+signInForm.addEventListener('submit', async (event)=>{
     event.preventDefault();
     const user = await signInUser(signInEmail.value, signInPassword.value);
   
     if (user){
         redirectIfLoggedIn();
     } else {
+         // eslint-disable-next-line
         console.error(user);
     }
 });
