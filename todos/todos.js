@@ -33,11 +33,12 @@ todoForm.addEventListener('submit', async (e) => {
 
 // add async complete todo handler function
 async function handleComplete(todo) {
-    const completedTask = {
-        todo: todo.complete = true,
+ 
+    const completedTodo = {
+        complete: todo.complete = true,
     };
     // call completeTodo
-    const response = await completeTodo(todo.id, completedTask);
+    const response = await completeTodo(todo.id, completedTodo);
     if (response.error) {
         //eslint-disable-next-line no-console
         console.log(response.error);
@@ -90,9 +91,8 @@ logoutButton.addEventListener('click', () => {
 
 deleteButton.addEventListener('click', async () => {
     // delete all todos
-    let response = await getTodos();
     // modify state to match 
-    deleteAllTodos(response);
+    deleteAllTodos();
     // re displayTodos
     displayTodos();
 });
